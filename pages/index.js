@@ -1,10 +1,16 @@
 import useSwr from 'swr'
 import Link from 'next/link'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
+const fetcher = (url) => fetch(url, {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({test:'test'}),}).then((res) => res.json())
 
 export default function Index() {
-  const { data, error } = useSwr('/api/users/test/test2', fetcher)
+  const { data, error } = useSwr('/azerty/api/users/test/test2', fetcher)
 
   if (error) return <div>Failed to load users</div>
   if (!data) return <div>Loading...</div>
