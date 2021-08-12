@@ -4,7 +4,7 @@ import Link from 'next/link'
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export default function Index() {
-  const { data, error } = useSwr('/api/users', fetcher)
+  const { data, error } = useSwr('/api/users/test/test2', fetcher)
 
   if (error) return <div>Failed to load users</div>
   if (!data) return <div>Loading...</div>
